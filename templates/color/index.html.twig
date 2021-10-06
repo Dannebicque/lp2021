@@ -3,18 +3,31 @@
 {% block title %}Hello ColorController!{% endblock %}
 
 {% block body %}
-La couleur choisie est <span style="color: {{ couleur }}">{{ couleur }}</span>.
+    La couleur choisie est <span style="color: {{ couleur }}">{{ couleur }}</span>.
 
+    {# /*
+     * Pour la page /color  afficher le mot de la même couleur dynamiquement ('bleu' en bleu) (en CSS)
+Pour la couleur rouge afficher en plus le Message : 'Attention risque de virus' en rouge
+     */
+    #}
+    {% if couleur == 'red' or couleur == 'rouge' %}
+        <span style="color: red">Attention risque de virus</span>
+    {% endif %}
     <ul>
         <li>
             <a href="{{ path('time_now') }}">Date du jour</a>
         </li>
-        <li>
-            <a href="{{ path('color', {couleur:'red'}) }}">Rouge</a>
-        </li>
-        <li>
-            <a href="{{ path('color', {couleur:'blue'}) }}">Bleu</a>
-        </li>
+        {% for color in couleurs %}
+            <li>
+                <a href="{{ path('color', {couleur:color}) }}">
+                    {% if color == couleur %}
+                        <strong>{{ color }}</strong>
+                    {% else %}
+                        {{ color }}
+                    {% endif %}
+                </a>
+            </li>
+        {% endfor %}
     </ul>
 
 
