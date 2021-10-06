@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ColorController!{% endblock %}
+
+{% block body %}
+La couleur choisie est <span style="color: {{ couleur }}">{{ couleur }}</span>.
+
+    <ul>
+        <li>
+            <a href="{{ path('time_now') }}">Date du jour</a>
+        </li>
+        <li>
+            <a href="{{ path('color', {couleur:'red'}) }}">Rouge</a>
+        </li>
+        <li>
+            <a href="{{ path('color', {couleur:'blue'}) }}">Bleu</a>
+        </li>
+    </ul>
+
+
+{% endblock %}
