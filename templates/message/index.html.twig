@@ -5,5 +5,5 @@
 {% block body %}
     <h1>{{ message.titre }}</h1>
     <p>{{ message.message }}</p>
-    <p>Modifié le : {{ message.date|date('d/m/Y H:i') }}</p>
+    <p>Modifié le : {{ message.date|date('d/m/Y H:i') }}, écrit par {{ message.auteur.nom }}</p>
 {% endblock %}

@@ -4,7 +4,7 @@
     {% for message in messages %}
         <h1>{{ message.titre }}</h1>
         <p>{{ message.message }}</p>
-        <p>Modifié le : {{ message.date|date('d/m/Y H:i') }}</p>
+        <p>Modifié le : {{ message.date|date('d/m/Y H:i') }}, écrit par {{ message.auteur.nom }}</p>
         <a href="{{ path('message_edit', {id : message.id}) }}">Modifier</a>
         <a href="{{ path('message_delete', {id : message.id}) }}">Supprimer</a>
         <hr>

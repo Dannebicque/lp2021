@@ -36,7 +36,7 @@ class Message
     private $date;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Auteur::class, inversedBy="messages")
+     * @ORM\ManyToOne(targetEntity=Auteur::class, inversedBy="messages", fetch="EAGER")
      */
     private $auteur;
 
