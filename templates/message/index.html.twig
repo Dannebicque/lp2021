@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello MessageController!{% endblock %}
+
+{% block body %}
+    <h1>{{ message.titre }}</h1>
+    <p>{{ message.message }}</p>
+    <p>Modifié le : {{ message.date|date('d/m/Y H:i') }}</p>
+{% endblock %}
