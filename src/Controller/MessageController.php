@@ -39,7 +39,7 @@ class MessageController extends AbstractController
     #[Route('/edit/{id}', name: 'message_edit')]
     public function edit(Message $message): Response
     {
-
+        //fait automatiquement un select * from message where id = id et stocke le résultat dans message
         return $this->render('message/index.html.twig', [
             'message' => $message
         ]);
