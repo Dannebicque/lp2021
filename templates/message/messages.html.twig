@@ -6,6 +6,7 @@
         <p>{{ message.message }}</p>
         <p>Modifié le : {{ message.date|date('d/m/Y H:i') }}</p>
         <a href="{{ path('message_edit', {id : message.id}) }}">Modifier</a>
+        <a href="{{ path('message_delete', {id : message.id}) }}">Supprimer</a>
         <hr>
     {% endfor %}
 {% endblock %}
