@@ -116,7 +116,7 @@ class Message
     {
         if (!$this->categories->contains($category)) {
             $this->categories[] = $category;
-            $category->addArticle($this);
+            $category->addMessage($this);
         }
 
         return $this;
@@ -125,7 +125,7 @@ class Message
     public function removeCategory(Categorie $category): self
     {
         if ($this->categories->removeElement($category)) {
-            $category->removeArticle($this);
+            $category->removeMessage($this);
         }
 
         return $this;

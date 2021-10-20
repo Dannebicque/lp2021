@@ -2,7 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\Auteur;
 use App\Entity\Message;
+use App\Repository\AuteurRepository;
+use App\Repository\CategorieRepository;
 use App\Repository\MessageRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -12,11 +15,20 @@ use Symfony\Component\Routing\Annotation\Route;
 class MessageController extends AbstractController
 {
     #[Route('/message', name: 'message')]
-    public function index(EntityManagerInterface $entityManager): Response
+    public function index(
+        CategorieRepository $categorieRepository,
+        AuteurRepository $auteurRepository, EntityManagerInterface $entityManager): Response
     {
+        $auteur = $auteurRepository->find(1);
+        $categorie = $categorieRepository->find(1);
+
         $message = new Message();
         $message->setTitre('Premier message');
         $message->setMessage('Le message de mon premier message');
+        $message->setAuteur($auteur);
+
+        $message->addCategory($categorie);
+        //ou $categorie->addMessage($message);
 
         $entityManager->persist($message);
         $entityManager->flush();
