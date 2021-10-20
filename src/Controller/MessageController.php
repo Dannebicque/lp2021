@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Message;
+use App\Repository\MessageRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -24,4 +25,25 @@ class MessageController extends AbstractController
             'message' => $message
         ]);
     }
+
+    #[Route('/messages', name: 'messages')]
+    public function messages(MessageRepository $messageRepository): Response
+    {
+        $messages = $messageRepository->findAll();
+
+        return $this->render('message/messages.html.twig', [
+            'messages' => $messages
+        ]);
+    }
+
+    #[Route('/edit/{id}', name: 'message_edit')]
+    public function edit(Message $message): Response
+    {
+
+        return $this->render('message/index.html.twig', [
+            'message' => $message
+        ]);
+    }
+
+
 }

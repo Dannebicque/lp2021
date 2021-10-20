@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% for message in messages %}
+        <h1>{{ message.titre }}</h1>
+        <p>{{ message.message }}</p>
+        <p>Modifié le : {{ message.date|date('d/m/Y H:i') }}</p>
+        <a href="{{ path('message_edit', {id : message.id}) }}">Modifier</a>
+        <hr>
+    {% endfor %}
+{% endblock %}
+
+{% block title %}
+
+{% endblock %}
+
